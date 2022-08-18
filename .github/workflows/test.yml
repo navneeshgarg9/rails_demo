@@ -3,25 +3,19 @@
 name: CI
 
 # Controls when the workflow will run
-on:
+on: [push]
   # Triggers the workflow on push or pull request events but only for the "development" branch
-  workflow_run:
-    workflows: ["commit"]
-    types: [success]
-    branches: ["test"]
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  publish:
+    name: publish package
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
+      - name: Wait for other checks to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          running-workflow-name: 'CircleCI Checks'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
       - name: Run for test workflow navu
         run: echo "Hello world"
