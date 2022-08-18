@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
  repository_dispatch:
-    types: [build_success]
+    types: [commit]
 
 jobs:
   deploy:
