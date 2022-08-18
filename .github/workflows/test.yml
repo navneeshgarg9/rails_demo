@@ -3,7 +3,9 @@
 name: CI
 
 # Controls when the workflow will run
-on: [push]
+on:
+ push:
+   branches: [test]
   # Triggers the workflow on push or pull request events but only for the "development" branch
 jobs:
   publish:
@@ -17,5 +19,6 @@ jobs:
           running-workflow-name: 'CircleCI Checks'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
+          allowed-conclusions: success
       - name: Run for test workflow navu
         run: echo "Hello world"
