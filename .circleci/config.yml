@@ -6,6 +6,7 @@ jobs:
       - image: alpine  
    steps:
       - run: echo "this is the test job"
+
 # Orchestrate our job run sequence
 workflows:
   commit:
