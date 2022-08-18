@@ -17,3 +17,5 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
           allowed-conclusions: failure
+      - name: test for job
+        run: echo hello
