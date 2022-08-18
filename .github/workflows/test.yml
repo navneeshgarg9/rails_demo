@@ -2,8 +2,9 @@
 
 name: Publish
 
-on: [pull_request]
-
+on:
+ pull_request:
+   branches: development
 jobs:
   publish:
     name: Publish the package
@@ -15,4 +16,4 @@ jobs:
           ref: ${{ github.ref }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
-          allowed-conclusions: success,skipped,cancelled,pass
+          allowed-conclusions: success,pass
