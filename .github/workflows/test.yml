@@ -4,21 +4,23 @@ name: CI
 
 # Controls when the workflow will run
 on:
- push:
-   branches: [test]
-  # Triggers the workflow on push or pull request events but only for the "development" branch
+ repository_dispatch:
+    types: [build_success]
+
 jobs:
-  publish:
-    name: publish package
+  deploy:
+    if: startsWith(github.sha, github.event.client_payload.text)
+    name: Deploy a new image
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for other checks to succeed
+      - uses: actions/checkout@v2
+
+      - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: ${{ github.ref }}
-          running-workflow-name: 'CircleCI Checks'
+          ref: master
+          check-name: "CircleCI Checks"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
-          allowed-conclusions: success
+          wait-interval: 20
       - name: Run for test workflow navu
         run: echo "Hello world"
