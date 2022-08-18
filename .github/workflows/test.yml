@@ -1,26 +1,18 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish
 
-# Controls when the workflow will run
-on:
- repository_dispatch:
-    types: [commit]
+on: [push]
 
 jobs:
-  deploy:
-    if: startsWith(github.sha, github.event.client_payload.text)
-    name: Deploy a new image
+  publish:
+    name: Publish the package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
       - name: Wait for tests to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: master
-          check-name: "CircleCI Checks"
+          ref: ${{ github.ref }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 20
-      - name: Run for test workflow navu
-        run: echo "Hello world"
+          wait-interval: 10
+          allowed-conclusions: success,skipped,cancelled,pass
