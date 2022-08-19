@@ -15,7 +15,7 @@ jobs:
         id: wait-for-build
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: commits
+          checkName: commit
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           intervalSeconds: 10
           timeoutSeconds: 100
