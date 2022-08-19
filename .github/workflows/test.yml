@@ -19,5 +19,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Do something with a passing build
-        if: steps.wait-for-build.outputs.conclusion == 'success' && steps.wait-for-build.outputs.checkName == 'true'
-        run: echo steps.wait-for-build.outputs.checkName is exist
+ #       if: steps.wait-for-build.outputs.conclusion == 'success' && steps.wait-for-build.outputs.checkName == 'true'
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        run: echo steps.wait-for-build.outputs is exist
