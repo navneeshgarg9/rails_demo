@@ -23,7 +23,13 @@ jobs:
       - name: Do something if build isnot launch
         if: steps.wait-for-build.outputs.conclusion == 'does not exist'
         run: echo job does not exist && true
-
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+         key: ${{ secrets.SSH_KEY }}
+         known_hosts: ${{ secrets.HOSTNAME }}
+         name: id_rsa # optional
+         if_key_exists: fail
       - name: Do something with a passing built
         if: steps.wait-for-build.outputs.conclusion == 'success'
         run: ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.HOSTNAME }} && ls -lrth /tmp
