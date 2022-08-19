@@ -20,4 +20,4 @@ jobs:
 
       - name: Do something with a passing build
         if: steps.wait-for-build.outputs.conclusion == 'success' && steps.wait-for-build.outputs.checkName == 'true'
-        run: echo ${{ checkName }} is exist
+        run: echo steps.wait-for-build.outputs.checkName is exist
