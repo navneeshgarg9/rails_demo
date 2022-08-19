@@ -17,6 +17,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: commits
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          intervalSeconds: 10
+          timeoutSeconds: 100
+          
+      - name: Do something if build isnot launch
+        if: steps.wait-for-build.outputs.conclusion == 'does not exist'
+        run: echo job does not exist && true
 
       - name: Do something with a passing build
  #       if: steps.wait-for-build.outputs.conclusion == 'success' && steps.wait-for-build.outputs.checkName == 'true'
