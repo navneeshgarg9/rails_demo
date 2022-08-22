@@ -5,6 +5,7 @@ name: Publish
 on:
  pull_request:
    branches: development
+ workflow_dispatch:
 jobs:
   publish:
     name: Publish the package
