@@ -60,5 +60,7 @@
 #     # password: "please use keys"
 #   }
 
-server "3.236.52.230", user: "ubuntu", roles: %w{app db web}
-
+#server "3.236.52.230", user: "ubuntu", roles: %w{app db web}
+role :app, %w{ubuntu@3.236.52.230}
+role :web, %w{ubuntu@3.236.52.230}
+role :db, %w{ubuntu@3.236.52.230}
