@@ -38,18 +38,18 @@ namespace :puma do
 end
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
-  task :check_revision do
-    on roles(:app) do
+#  desc "Make sure local git is in sync with remote."
+#  task :check_revision do
+#    on roles(:app) do
 
       # Update this to your branch name: master, main, etc. Here it's main
-      unless `git rev-parse HEAD` == `git rev-parse origin/test`
-        puts "WARNING: HEAD is not the same as origin/test"
-        puts "Run `git push` to sync changes."
-        exit
-      end
-    end
-  end
+#      unless `git rev-parse HEAD` == `git rev-parse origin/test`
+#        puts "WARNING: HEAD is not the same as origin/test"
+#        puts "Run `git push` to sync changes."
+#        exit
+#      end
+#    end
+#  end
 
   desc 'Initial Deploy'
   task :initial do
