@@ -54,4 +54,4 @@ jobs:
          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       
       - name: deploy app using Capistrano
-        run: cap production deploy
+        run: bundle exec cap production deploy
