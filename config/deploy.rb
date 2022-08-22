@@ -7,7 +7,7 @@ set :deploy_to, "/opt/application/rails_demo"
 set :branch, "test"
 
 set :puma_threads,    [1, 2]
-set :puma_workers,    0
+set :puma_workers,    1
 
 set :stage,           :production
 set :deploy_via,      :remote_cache
