@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano3-puma'
-gem 'puma'
 gem 'capistrano-rvm'
 
 
