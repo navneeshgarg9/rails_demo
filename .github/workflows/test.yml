@@ -54,4 +54,7 @@ jobs:
          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       
       - name: deploy app using Capistrano
-        run: bundle exec cap production deploy
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+          bundle exec cap production deploy
