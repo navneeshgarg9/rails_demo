@@ -28,6 +28,7 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano3-puma'
 gem 'capistrano-rvm'
+gem 'capistrano-bundler', require: false
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'bundler', '>= 1.3.0'
