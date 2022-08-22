@@ -28,7 +28,8 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano3-puma'
 gem 'capistrano-rvm'
-
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
