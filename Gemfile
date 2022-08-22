@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano3-puma'
-gem 'capistrano-rvm'
+#gem 'capistrano-rvm'
 
 
 # Use Redis adapter to run Action Cable in production
