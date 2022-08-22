@@ -59,3 +59,6 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+role :app, %w{ubuntu@3.236.52.230}
+role :web, %w{ubuntu@3.236.52.230}
+role :db, %w{ubuntu@3.236.52.230}
