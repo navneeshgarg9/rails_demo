@@ -43,12 +43,12 @@ jobs:
         ruby-version: ['2.6.7']
     steps:
       - uses: actions/checkout@v3
-      - name: bundle run
-        run: bundle config --delete deployment
       - name: cap running
         uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
         with:
          ruby-version: ${{ matrix.ruby-version }}
+         run: bundle config --delete deployment
          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+         
       - name: deploy app using Capistrano
         run: cap production deploy
