@@ -33,3 +33,17 @@ jobs:
       - name: Do something with a passing built
         if: steps.wait-for-build.outputs.conclusion == 'success'
         run: ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.HOSTNAME }} && ls -lrth /tmp
+        
+  capistrano:
+    name: configure capistrano
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - uses: actions/checkout@v3
+      - name: cap running
+        uses: ruby/setup-ruby@2b019609e2b0f1ea1a2bc8ca11cb82ab46ada124
+        with:
+         ruby-version: 2.6.7
+         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: deploy app using Capistrano
+        run: cap production deploy
