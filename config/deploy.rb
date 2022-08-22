@@ -4,6 +4,7 @@ lock "~> 3.17.0"
 set :application, "rails_demo"
 set :repo_url, "git@github.com:navneeshgarg9/rails_demo.git"
 set :deploy_to, "/opt/application/rails_demo"
+set :branch, "test"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
