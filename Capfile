@@ -17,7 +17,7 @@ require "capistrano/rvm"
 # install_plugin Capistrano::SCM::Hg
 # or
 # require "capistrano/scm/svn"
-install_plugin Capistrano::SCM::Svn
+#install_plugin Capistrano::SCM::Svn
 # or
 require "capistrano/scm/git"
 require 'capistrano/puma'
