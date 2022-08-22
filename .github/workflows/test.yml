@@ -51,8 +51,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
          ruby-version: ${{ matrix.ruby-version }}
+         run: bundle lock --add-platform x86_64-linux
          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - run: bundle lock --add-platform x86_64-linux
+         
          
          
       - name: deploy app using Capistrano
