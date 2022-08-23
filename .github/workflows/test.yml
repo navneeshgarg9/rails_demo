@@ -22,7 +22,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: commit
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           intervalSeconds: 10
           timeoutSeconds: 100
           
