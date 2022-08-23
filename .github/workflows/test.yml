@@ -46,7 +46,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
          ruby-version: ${{ matrix.ruby-version }}
-         run: gem install bundle
+      - name: install dependencies 
+        run: gem install capistrano capistrano-rails capistrano3-puma capistrano-rvm capistrano-bundler 
 #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
         if: steps.wait-for-build.outputs.conclusion == 'success'
