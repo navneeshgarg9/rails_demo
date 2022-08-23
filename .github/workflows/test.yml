@@ -9,7 +9,7 @@ on:
  
 jobs:
  if_merged:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == false
     name: start the process with runner
     runs-on: ubuntu-latest
     strategy:
@@ -22,7 +22,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: commit
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           intervalSeconds: 10
           timeoutSeconds: 100
           
