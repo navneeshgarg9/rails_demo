@@ -3,13 +3,13 @@ name: Publish
 on:
  pull_request:
    branches: development
-   types:
-     - closed
+#   types:
+#     - closed
  workflow_dispatch:
  
 jobs:
  if_merged:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == false
     name: start the process with runner
     runs-on: ubuntu-latest
     strategy:
@@ -42,12 +42,14 @@ jobs:
       - uses: actions/checkout@v2   
         
       - name: Do something with a passing built
-        if: steps.wait-for-build.outputs.conclusion == 'success'
+        if: steps.wait-for-build.outputs.conclusion == 'failure'
         uses: ruby/setup-ruby@v1
         with:
          ruby-version: ${{ matrix.ruby-version }}
-         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+         run: gem install bundle
+#         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
+        if: steps.wait-for-build.outputs.conclusion == 'success'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
