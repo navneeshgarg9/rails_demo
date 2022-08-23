@@ -23,6 +23,8 @@ group :capistrano do
  gem 'capistrano3-puma'
  gem 'capistrano-rvm'
  gem 'capistrano-bundler', require: false
+ gem 'ed25519'
+ gem 'bcrypt_pbkdf'
 end
 
 
@@ -37,8 +39,6 @@ group :development, :test, :production do
  gem 'turbolinks', '~> 5'
  gem 'jbuilder', '~> 2.5'
  gem 'bootsnap', '>= 1.1.0', require: false
- gem 'ed25519'
- gem 'bcrypt_pbkdf'
  gem 'bundler', '>= 1.3.0'
 end
 
