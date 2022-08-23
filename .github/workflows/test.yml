@@ -48,7 +48,7 @@ jobs:
         with:
          ruby-version: ${{ matrix.ruby-version }}
       - name: install dependencies 
-        run: gem install capistrano capistrano-rails capistrano3-puma capistrano-rvm capistrano-bundler rake minitest:5.16.2 thread_safe:0.3.6 tzinfo:1.2.10 activesupport:5.2.8.1
+        run: gem install capistrano capistrano-rails capistrano3-puma capistrano-rvm capistrano-bundler rake minitest:5.16.2 thread_safe:0.3.6 tzinfo:1.2.10 activesupport:5.2.8.1 builder:3.2.4
 #        run: bundle install --without development production test
 #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
