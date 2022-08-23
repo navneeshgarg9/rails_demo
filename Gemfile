@@ -25,11 +25,14 @@ gem 'jbuilder', '~> 2.5'
 
 # configure capistrano
 
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano3-puma'
-gem 'capistrano-rvm'
-gem 'capistrano-bundler', require: false
+group :capistrano do
+ gem 'capistrano'
+ gem 'capistrano-rails'
+ gem 'capistrano3-puma'
+ gem 'capistrano-rvm'
+ gem 'capistrano-bundler', require: false
+end
+
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'bundler', '>= 1.3.0'
