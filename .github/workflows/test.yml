@@ -29,6 +29,9 @@ jobs:
       - name: Do something if build isnot launch
         if: steps.wait-for-build.outputs.conclusion == 'does not exist'
         run: echo job does not exist && true
+      - name: Stop the process if circleci check failed
+        if: steps.wait-for-build.outputs.conclusion == 'failure'
+        run: exit 1
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
