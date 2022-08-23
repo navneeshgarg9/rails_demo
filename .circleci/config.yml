@@ -5,7 +5,7 @@ jobs:
    docker:
       - image: alpine  
    steps:
-#      - run: echo "this is the test job"
+##      - run: echo "this is the test job"
       - run: rails -v
 # Orchestrate our job run sequence
 workflows:
