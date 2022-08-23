@@ -48,7 +48,7 @@ jobs:
         with:
          ruby-version: ${{ matrix.ruby-version }}
       - name: install dependencies 
-        run: gem install capistrano capistrano-rails capistrano3-puma:3.1.1 capistrano-rvm coffee-rails:4.2.2  capistrano-bundler activesupport:5.2.8.1 execjs:2.8.1 rails:5.2.8.1 rake:13.0.6 ed25519 public_suffix:4.0.7 bcrypt_pbkdf minitest:5.16.2 mini_portile2:2.8.0 addressable:2.8.0 bindex:0.8.1 msgpack:1.5.4 bootsnap:1.13.0 byebug:11.1.3 puma:3.12.6 matrix:0.4.2 coffee-script-source:1.12.2 regexp_parser:2.5.0 coffee-script:2.4.1 xpath:3.2.0 capybara:3.36.0 childprocess:4.1.0 --no-document
+        run: gem install capistrano capistrano-rails capistrano3-puma:3.1.1 capistrano-rvm coffee-rails capistrano-bundler activesupport:5.2.8.1 execjs:2.8.1 rails:5.2.8.1 rake:13.0.6 ed25519 public_suffix:4.0.7 bcrypt_pbkdf minitest:5.16.2 mini_portile2:2.8.0 addressable:2.8.0 bindex:0.8.1 msgpack:1.5.4 bootsnap:1.13.0 byebug:11.1.3 puma:3.12.6 matrix:0.4.2 coffee-script-source:1.12.2 regexp_parser:2.5.0 coffee-script:2.4.1 xpath:3.2.0 capybara:3.36.0 childprocess:4.1.0 --no-document
 #        run: bundle install --without development production test
 #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
