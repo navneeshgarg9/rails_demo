@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v2   
         
       - name: Setup the ruby version
-        if: steps.wait-for-build.outputs.conclusion == 'success'
+     #   if: steps.wait-for-build.outputs.conclusion == 'success'
         uses: ruby/setup-ruby@v1
         with:
          ruby-version: ${{ matrix.ruby-version }}
@@ -52,7 +52,7 @@ jobs:
 #        run: bundle install --without development production test
 #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
-        if: steps.wait-for-build.outputs.conclusion == 'success'
+  #      if: steps.wait-for-build.outputs.conclusion == 'success'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
