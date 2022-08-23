@@ -3,13 +3,13 @@ name: Publish
 on:
  pull_request:
    branches: development
-#   types:
-#     - closed
+   types:
+     - closed
  workflow_dispatch:
  
 jobs:
  if_merged:
-    if: github.event.pull_request.merged == false
+    if: github.event.pull_request.merged == true
     name: start the process with runner
     runs-on: ubuntu-latest
     strategy:
@@ -31,7 +31,7 @@ jobs:
         run: echo job does not exist && true
       - name: Stop the process if circleci check failed
         if: steps.wait-for-build.outputs.conclusion == 'failure'
-        run: exit 0
+        run: exit 1
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
@@ -41,8 +41,8 @@ jobs:
          if_key_exists: fail
       - uses: actions/checkout@v2   
         
-      - name: Do something with a passing built
-        if: steps.wait-for-build.outputs.conclusion == 'failure'
+      - name: Setup the ruby version
+        if: steps.wait-for-build.outputs.conclusion == 'success'
         uses: ruby/setup-ruby@v1
         with:
          ruby-version: ${{ matrix.ruby-version }}
@@ -50,7 +50,7 @@ jobs:
         run: bundle install --without development production test
 #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: deploy app using Capistrano
-#        if: steps.wait-for-build.outputs.conclusion == 'success'
+        if: steps.wait-for-build.outputs.conclusion == 'success'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
