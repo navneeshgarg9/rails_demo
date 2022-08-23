@@ -32,7 +32,7 @@ jobs:
         run: echo job does not exist && true
       - name: Stop the process if circleci check failed
         if: steps.wait-for-build.outputs.conclusion == 'failure'
-        run: exit 1
+        run: exit 0
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
