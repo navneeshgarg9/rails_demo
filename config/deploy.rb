@@ -5,7 +5,6 @@ set :application, "rails_demo"
 set :repo_url, "git@github.com:navneeshgarg9/rails_demo.git"
 set :deploy_to, "/opt/application/rails_demo"
 set :branch, "test"
-
 set :puma_threads,    [1, 2]
 set :puma_workers,    0
 
